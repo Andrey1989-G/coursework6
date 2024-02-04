@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="row">
+       <div class="bg_img_right"><img src="{% static 'main/images/bg_img1.png' %}" alt="#" /></div>
+       <div class="main-start-box">
+          <div class="container">
+             <div class="supplier clearfix">
+                <div class="col-md-5 col-sm-6">
+                   <div class="right-supplier">
+                      <h2 class="modal-title">Регистрация</h2>
+                       <br>
+                        <div class="card-body">
+                            <form method="post">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+                                <button type="submit" class="btn btn-success">Регистрация</button>
+                            </form>
+                        </div>
+                   </div>
+                </div>
+                <div class="col-md-7 col-sm-6">
+                   <div class="right-supplier">
+                      <img class="img-responsive" src="{% static 'main/images/supplier-pc-img.png' %}"/>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+
+
+{% endblock %}

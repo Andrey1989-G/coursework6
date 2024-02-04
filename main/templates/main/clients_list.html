@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %}
+{% load static %}
+   {% block content %}
+        <nav class="tm-main-nav">
+            <h4>Меню</h4>
+            <br>
+            <ul class="tm-main-nav-ul">
+              <li><a href="{% url 'main:create_client' %}"><img width="32" src="{% static 'main/images/about-icon-2.png' %}" alt="#" /> Добавить клиента</a></li>
+              <li><a href="{% url 'main:list_log_sending_mail' %}"><img width="32" src="{% static 'main/images/about-icon-1.png' %}" alt="#" /> Лог рассылки </a></li>
+            </ul>
+        </nav>
+            <div class="container">
+                  <div class="card-body">
+                    <div class="col-12 text-left">
+                        <table class="table">
+                            <tr>
+                                <th><h4>Имя</h4></th>
+                                <th><h4>Фамилия</h4></th>
+                                <th><h4>Имейл</h4></th>
+                                <th><h4></h4></th>
+                                <th><h4></h4></th>
+                            </tr>
+                            {% for object in object_list %}
+                            <tr>
+                                <td><h4>{{ object.first_name }}</h4></td>
+                                <td><h4>{{ object.last_name }}</h4></td>
+                                <td><h4>{{ object.email }}</h4></td>
+                                <td><h4>
+                                    <a href="{% url 'main:edit_client' object.pk %}"
+                                        class="btn btn-sm btn-block btn-outline-secondary">Редактировать</a>
+                                </h4></td>
+                                <td><h4>
+                                    <a href="{% url 'main:delete_client' object.pk %}"
+                                        class="btn btn-sm btn-block btn-outline-danger">Удалить</a>
+                                </h4></td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+
+                    </div>
+                </div>
+               </div>
+            </div>
+
+      </div>
+   {% endblock %}

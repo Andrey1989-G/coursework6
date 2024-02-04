@@ -1,0 +1,37 @@
+{% extends 'main/base.html' %}
+{% load static %}
+   {% block content %}
+<!--      продукты. Добавить перечисление-->
+
+    <div class="page-content-product">
+         <div class="main-product">
+            <div class="container">
+               <div class="row clearfix">
+                  <div class="find-box">
+                     <h1>Здесь Вы можете получить бизнеспродукты<br>и бизнеспартнеров.</h1>
+                     <h4>Это очень просто. Закажите рассылку и откроются все двери.</h4>
+                     <div class="product-sh">
+
+
+
+                     </div>
+                  </div>
+               </div>
+                {% for blog in blog_list %}
+                  <div class="col-lg-3 col-sm-6 col-md-3">
+                     <a href="{% url 'blog:blog_view' blog.pk %}">
+                        <div class="box-img">
+                           <h4>{{ blog.title }}</h4>
+                           <img src="/media/{{ blog.image }}" alt="" />
+                            <h6>{{ blog.content|slice:50 }}</h6>
+                        </div>
+                     </a>
+                  </div>
+                {% endfor %}
+
+               </div>
+            </div>
+         </div>
+      </div>
+
+   {% endblock %}
